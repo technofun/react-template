@@ -6,17 +6,44 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
+  Redirect
 } from "react-router-dom";
 function App() {
+  const user = false
   return (
       <Router>
-      {/* <MyNavbar /> */}
       <Switch>
         <Route exact path="/">
-        <Home />
+          {
+            user ? <Home /> : <Redirect to="/register" />
+          }
         </Route>
-        <Route path="/login" component={Login} />
-        <Route path="/register" component={Register} />
+        <Route exact path="/login">
+          {
+            !user ? <Login /> : <Redirect to="/" />
+          }
+        </Route>
+        <Route path="/register">
+          {
+            !user ? <Register /> : <Redirect to="/" />
+          }
+        </Route>
+        {
+
+          user && (
+            <>
+              {/* <Route path="/movies">
+                <Home type="movie" />
+              </Route>
+              <Route path="/series">
+                <Home type="series" />
+              </Route>
+              <Route path="/watch">
+                <Watch />
+              </Route> */}
+            </>
+          )
+        }
       </Switch>
     </Router>
   );

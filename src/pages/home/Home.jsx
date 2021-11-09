@@ -5,6 +5,13 @@ function Home() {
     return (
         <div>
             Home
+            Home
+            Home
+            Home
+            Home
+            Home
+            Home
+            Home
         </div>
     )
 }
